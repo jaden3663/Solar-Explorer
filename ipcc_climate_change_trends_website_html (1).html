@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPCC 기반 기후 변화 현황</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fa;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f4c75, #3282b8);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    nav {
+      background: #1b262c;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      margin-bottom: 30px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      color: #0f4c75;
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      color: #d90429;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table th,
+    table td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+
+    table th {
+      background: #3282b8;
+      color: white;
+    }
+
+    footer {
+      background: #1b262c;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 40px;
+    }
+
+    .quote {
+      background: #e8f1f8;
+      border-left: 6px solid #3282b8;
+      padding: 20px;
+      margin-top: 20px;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+    }
+  
+
+    .chart-container {
+      margin-top: 30px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      height: 300px;
+      margin-top: 20px;
+      border-left: 2px solid #333;
+      border-bottom: 2px solid #333;
+      padding: 10px;
+    }
+
+    .bar {
+      width: 60px;
+      background: linear-gradient(to top, #3282b8, #90e0ef);
+      text-align: center;
+      color: #000;
+      font-size: 0.9rem;
+      border-radius: 8px 8px 0 0;
+      position: relative;
+    }
+
+    .bar span {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: bold;
+    }
+
+    .line-chart {
+      position: relative;
+      width: 100%;
+      height: 350px;
+      margin-top: 30px;
+      border-left: 2px solid #333;
+      border-bottom: 2px solid #333;
+      overflow: hidden;
+    }
+
+    .line {
+      position: absolute;
+      width: 80%;
+      height: 3px;
+      transform-origin: left center;
+    }
+
+    .line1 {
+      background: red;
+      top: 240px;
+      left: 40px;
+      transform: rotate(-12deg);
+    }
+
+    .line2 {
+      background: orange;
+      top: 260px;
+      left: 40px;
+      transform: rotate(-8deg);
+    }
+
+    .line3 {
+      background: green;
+      top: 280px;
+      left: 40px;
+      transform: rotate(-5deg);
+    }
+
+    .chart-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      padding: 0 30px;
+      font-weight: bold;
+    }
+
+    .legend {
+      margin-top: 20px;
+    }
+
+    .legend div {
+      margin-bottom: 8px;
+    }
+
+    .red-box,
+    .orange-box,
+    .green-box {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+    }
+
+    .red-box {
+      background: red;
+    }
+
+    .orange-box {
+      background: orange;
+    }
+
+    .green-box {
+      background: green;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>현재 기후 변화 추세와 미래 예측</h1>
+    <p>
+      이 웹사이트는 국제기구 IPCC(기후변화에 관한 정부간 협의체) 보고서를 기반으로
+      현재 지구 온난화 추세와 미래 기후 변화 전망을 정리한 자료입니다.
+    </p>
+  </header>
+
+  <nav>
+    <a href="#current">현재 상황</a>
+    <a href="#causes">원인</a>
+    <a href="#future">미래 예측</a>
+    <a href="#solutions">대응 방안</a>
+    <a href="#sources">출처</a>
+  </nav>
+
+  <section id="current">
+    <div class="card">
+      <h2>현재 기후 변화 상황</h2>
+      <p>
+        IPCC 제6차 평가보고서(AR6)에 따르면 인간 활동으로 인해 지구 평균 기온은
+        산업화 이전 대비 약 <span class="highlight">1.1°C 상승</span>했습니다.
+      </p>
+
+      <p>
+        특히 화석연료 사용 증가와 삼림 파괴로 인해 대기 중 이산화탄소 농도가 빠르게 증가하고 있으며,
+        이는 폭염, 가뭄, 홍수, 해수면 상승 등의 현상을 강화시키고 있습니다.
+      </p>
+
+      <div class="quote">
+        “인간의 영향이 대기, 해양, 육지를 온난화시켰다는 것은 명백하다.”
+        — IPCC AR6 보고서
+      </div>
+
+      <div class="chart-container">
+        <h3>지구 평균기온 상승 그래프</h3>
+        <p>산업화 이전 대비 지구 평균기온 상승 추세</p>
+
+        <div class="bar-chart">
+          <div class="bar" style="height: 40px;">0.2°C<span>1900</span></div>
+          <div class="bar" style="height: 90px;">0.5°C<span>1950</span></div>
+          <div class="bar" style="height: 150px;">0.8°C<span>1980</span></div>
+          <div class="bar" style="height: 220px;">1.1°C<span>2020</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="causes">
+    <div class="card">
+      <h2>기후 변화의 주요 원인</h2>
+
+      <ul>
+        <li>화석연료 사용 증가</li>
+        <li>산림 파괴와 토지 이용 변화</li>
+        <li>산업 활동과 탄소 배출</li>
+        <li>메탄 및 기타 온실가스 증가</li>
+      </ul>
+
+      <table>
+        <tr>
+          <th>온실가스</th>
+          <th>주요 발생 원인</th>
+          <th>영향</th>
+        </tr>
+        <tr>
+          <td>이산화탄소 (CO₂)</td>
+          <td>석탄, 석유, 천연가스 사용</td>
+          <td>지구 온난화 가속</td>
+        </tr>
+        <tr>
+          <td>메탄 (CH₄)</td>
+          <td>축산업, 쓰레기 매립</td>
+          <td>강력한 온실효과</td>
+        </tr>
+        <tr>
+          <td>아산화질소 (N₂O)</td>
+          <td>비료 사용</td>
+          <td>대기 온난화</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section id="future">
+    <div class="card">
+      <h2>미래 기후 변화 예측</h2>
+
+      <p>
+        IPCC는 현재와 같은 온실가스 배출이 계속될 경우,
+        21세기 말에는 지구 평균 기온이 최대 <span class="highlight">3~5°C 상승</span>할 가능성이 있다고 예측합니다.
+      </p>
+
+      <table>
+        <tr>
+          <th>예상 변화</th>
+          <th>영향</th>
+        </tr>
+        <tr>
+          <td>폭염 증가</td>
+          <td>건강 피해 및 산불 위험 증가</td>
+        </tr>
+        <tr>
+          <td>해수면 상승</td>
+          <td>해안 도시 침수 위험</td>
+        </tr>
+        <tr>
+          <td>강수 패턴 변화</td>
+          <td>홍수와 가뭄 심화</td>
+        </tr>
+        <tr>
+          <td>빙하 감소</td>
+          <td>생태계 변화 및 수자원 문제</td>
+        </tr>
+      </table>
+
+      <p style="margin-top:20px;">
+        일부 시나리오에서는 2050년 이전에 지구 평균기온 상승폭이
+        <span class="highlight">1.5°C</span>에 도달할 가능성이 높다고 분석됩니다.
+      </p>
+
+      <div class="chart-container">
+        <h3>미래 기후 변화 시나리오</h3>
+        <p>IPCC 배출 시나리오에 따른 예상 기온 상승 추세</p>
+
+        <div class="line-chart">
+          <div class="line line1"></div>
+          <div class="line line2"></div>
+          <div class="line line3"></div>
+        </div>
+
+        <div class="chart-labels">
+          <span>2020</span>
+          <span>2050</span>
+          <span>2100</span>
+        </div>
+
+        <div class="legend">
+          <div><span class="red-box"></span>고배출 시나리오: 최대 +5°C</div>
+          <div><span class="orange-box"></span>중간 시나리오: 약 +3°C</div>
+          <div><span class="green-box"></span>탄소 감축 성공: 약 +1.5°C</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="solutions">
+    <div class="card">
+      <h2>대응 방안</h2>
+
+      <p>
+        IPCC는 기후 변화 피해를 줄이기 위해 빠르고 강력한 탄소 감축이 필요하다고 강조합니다.
+      </p>
+
+      <ul>
+        <li>재생에너지 확대</li>
+        <li>에너지 효율 개선</li>
+        <li>전기차 및 친환경 교통 확대</li>
+        <li>탄소중립 정책 추진</li>
+        <li>산림 복원 및 보호</li>
+      </ul>
+
+      <div class="quote">
+        “지금 행동하지 않으면 미래의 피해 비용은 훨씬 커질 것이다.”
+      </div>
+    </div>
+  </section>
+
+  <section id="sources">
+    <div class="card">
+      <h2>출처 및 참고 자료</h2>
+
+      <p>
+        • IPCC Sixth Assessment Report (AR6)<br>
+        • NASA Climate Change Reports<br>
+        • United Nations Climate Action
+      </p>
+
+      <p style="margin-top:20px;">
+        공식 사이트:<br>
+        https://www.ipcc.ch/<br>
+        https://climate.nasa.gov/
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Climate Change Information Website | Based on IPCC Reports</p>
+  </footer>
+
+</body>
+</html>
