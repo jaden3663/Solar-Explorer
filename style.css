@@ -1,0 +1,68 @@
+:root{
+  --bg:#0b0e1a; --panel:#141a2e; --panel2:#1c2440; --text:#e8ecff; --muted:#8b93b8;
+  --accent:#6ea8ff; --accent2:#ffb86e; --border:#2a3358;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  box-sizing:border-box;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Pretendard,sans-serif;line-height:1.5}
+header{padding:18px 16px 8px;text-align:center}
+header h1{margin:0;font-size:1.5rem;letter-spacing:.02em}
+header p{margin:4px 0 0;color:var(--muted);font-size:.85rem}
+nav{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;border-bottom:1px solid var(--border)}
+nav button{flex:0 0 auto;background:var(--panel);color:var(--text);border:1px solid var(--border);
+  padding:8px 14px;border-radius:20px;font-size:.85rem;cursor:pointer;white-space:nowrap}
+nav button.active{background:var(--accent);color:#0b0e1a;border-color:var(--accent);font-weight:600}
+main{max-width:900px;margin:0 auto;padding:16px}
+.panel{display:none}
+.panel.active{display:block}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:14px}
+.planet-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.planet-btn{background:var(--panel2);border:1px solid var(--border);color:var(--text);
+  padding:8px 12px;border-radius:8px;cursor:pointer;font-size:.85rem}
+.planet-btn.active{background:var(--accent);color:#0b0e1a;font-weight:600}
+.datagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.datagrid div{background:var(--panel2);border-radius:8px;padding:10px}
+.datagrid .label{color:var(--muted);font-size:.75rem}
+.datagrid .value{font-size:1.05rem;margin-top:2px}
+select,input{background:var(--panel2);color:var(--text);border:1px solid var(--border);
+  border-radius:8px;padding:8px;font-size:.9rem}
+label{font-size:.8rem;color:var(--muted);display:block;margin-bottom:4px}
+.row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px}
+.formula{background:#0e1326;border:1px solid var(--border);border-radius:8px;padding:12px;
+  font-family:"Cambria Math",Georgia,serif;font-size:1.05rem;text-align:center;margin:10px 0}
+.formula sup{color:var(--accent2)}
+button.run{background:var(--accent);color:#0b0e1a;border:none;padding:10px 18px;
+  border-radius:8px;font-weight:600;cursor:pointer;font-size:.9rem}
+.result-line{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);font-size:.9rem}
+.result-line:last-child{border-bottom:none}
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin-top:8px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--border);text-align:right}
+th:first-child,td:first-child{text-align:left}
+.chart{width:100%;height:420px}
+.muted{color:var(--muted);font-size:.8rem}
+#systemDiagram svg{width:100%;max-width:560px;height:auto;overflow:hidden;display:block;margin:0 auto}
+.orbit-ring{fill:none;stroke:#2a3358;stroke-width:1}
+.planet-dot{stroke:#0b0e1a;pointer-events:none}
+.planet-dot.selected{stroke:var(--accent2)}
+.hit-dot{fill:transparent;cursor:pointer}
+.hit-dot:hover + .planet-dot{stroke:#fff}
+.speedbar{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:10px}
+.speedbar button{background:var(--panel2);border:1px solid var(--border);color:var(--text);
+  padding:6px 10px;border-radius:14px;font-size:.78rem;cursor:pointer}
+.speedbar button.active{background:var(--accent);color:#0b0e1a;font-weight:600;border-color:var(--accent)}
+.zoombar{margin:8px 0}
+.zoombar button{background:var(--panel2);border:1px solid var(--accent2);color:var(--accent2);
+  padding:5px 12px;border-radius:14px;font-size:.78rem;cursor:pointer}
+.planet-btn.virtual{border-color:var(--accent2);color:var(--accent2)}
+.belt-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.belt-btn{background:var(--panel2);border:1px dashed var(--muted);color:var(--muted);
+  padding:8px 12px;border-radius:8px;cursor:pointer;font-size:.85rem}
+.belt-btn.active{background:#2c2240;border-color:#b49cff;color:#d8caff;font-weight:600}
+.belt-ring{fill:none;stroke:#8b93b8;stroke-dasharray:1.5 2;opacity:.55;pointer-events:none}
+.kuiper-ring{fill:none;stroke:#9fd8e8;stroke-dasharray:1.5 2.5;opacity:.5;pointer-events:none}
+.oort-shell{fill:#b49cff;opacity:.12;pointer-events:none}
+.oort-inner-line{fill:none;stroke:#b49cff;opacity:.5;pointer-events:none}
+.oort-overlay-label{position:absolute;left:50%;transform:translateX(-50%);
+  color:var(--muted);font-size:.8rem;pointer-events:none;white-space:nowrap;text-align:center}
